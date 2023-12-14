@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root to: "public/homes#index"
 
+  resources :customers, only: [:new, :index, :show, :about, :edit, :create, :destroy, :update, :top]
+  resources :admin, only: [:new, :index, :show, :about, :edit, :create, :destroy, :update, :top]
+
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {

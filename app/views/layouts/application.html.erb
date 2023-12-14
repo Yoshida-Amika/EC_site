@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EcSite</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <% if customer_signed_in? %>
+    <li>
+        <%= link_to "マイページ", '/customers/my_page' %>
+      </li>
+
+      <li>
+        <%= link_to "商品一覧", '/items' %>
+      </li>
+
+      <li>
+        <%= link_to "カート", '/cart_items' %>
+      </li>
+
+      <li>
+        <%= link_to "ログアウト", '/customers_sign_out', method: :delete %>
+      </li>
+
+    <% else %>
+
+      <li>
+        <%= link_to "About", '/about' %>
+      </li>
+
+      <li>
+        <%= link_to "商品一覧", '/items' %>
+      </li>
+
+      <li>
+        <%= link_to "新規登録", '/customers/sign_up' %>
+      </li>
+
+      <li>
+        <%= link_to "ログイン", '/customers/sign_in' %>
+      </li>
+
+
+    <% end %>
+  </header>
+    <%= yield %>
+  </body>
+</html>
