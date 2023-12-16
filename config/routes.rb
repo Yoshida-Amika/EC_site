@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   root to: "public/homes#index"
 
-  resources :customers, only: [:new, :index, :show, :about, :edit, :create, :destroy, :update, :top]
-  resources :admin, only: [:new, :index, :show, :about, :edit, :create, :destroy, :update, :top]
-
-
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
@@ -19,6 +15,22 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+
+  scope module: :public do
+    get 'about' => 'homes#about'
+    resources :customers
+    resources :sessions
+    resources :items
+    resources :cart_items
+  end
+
+  namespace :admin do
+    get '' => 'homes#top'
+    resources :customers
+    resources :homes
+
+
+  end
 
 
 

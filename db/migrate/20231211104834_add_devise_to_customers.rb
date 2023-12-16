@@ -19,7 +19,7 @@ class AddDeviseToCustomers < ActiveRecord::Migration[6.1]
       t.string :first_name_kana, null: false
       t.string :postal_code, null: false
       t.string :telephone_number, null: false
-      t.boolean :is_active, null: false
+      t.boolean :is_active, null: false ,default: true
 
 
 
@@ -58,6 +58,6 @@ class AddDeviseToCustomers < ActiveRecord::Migration[6.1]
   def self.down
     # By default, we don't want to make any assumption about how to roll back a migration when your
     # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    # raise ActiveRecord::IrreversibleMigration
   end
 end
