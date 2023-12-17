@@ -17,11 +17,20 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+    
+    resources :customers do
+      member do
+        get "check"
+        patch "withdrawl"
+      end
+    end
+    
     get 'about' => 'homes#about'
     resources :customers
     resources :sessions
     resources :items
     resources :cart_items
+    
   end
 
   namespace :admin do
