@@ -1,1 +1,19 @@
-商品新規登録画面
+<h1>商品新規登録</h1>
+
+<%= form_with model: @item do |f| %>
+
+    <h5>商品画像</h5>
+    <%= f.file_field :image, accept: "image/*" %>
+
+    <h5>商品名</h5>
+    <%= f.text_field :name %>
+
+    <h5>商品説明</h5>
+    <%= f.text_area :caption %>
+
+    <h5>税抜価格</h5>
+    <%= f.number_field :price %>
+
+    <%= f.submit '新規登録' %>
+
+<% end %>
