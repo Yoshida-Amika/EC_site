@@ -17,26 +17,31 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    
+
     resources :customers do
       member do
         get "check"
         patch "withdrawl"
       end
     end
-    
+
     get 'about' => 'homes#about'
     resources :customers
     resources :sessions
     resources :items
     resources :cart_items
-    
+
   end
 
   namespace :admin do
     get '' => 'homes#top'
     resources :customers
     resources :homes
+    resources :orders
+    resources :items
+    get 'item/:id' => 'item#index'
+    # get 'item/new'
+    post 'item' => 'item#create'
 
 
   end
