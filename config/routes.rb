@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     resources :sessions
     resources :items
     resources :cart_items
+    resources :orders
+    get 'thanks' => 'orders#thanks'
 
   end
 
