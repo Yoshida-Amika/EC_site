@@ -5,10 +5,16 @@ before_action :authenticate_customer!
 
 
 def edit
+    @customer = current_customer
 end
 
 def show
     @customer = Customer.find(params[:id])
+    @customer = current_customer
+end
+
+def confirmation
+    @customer = current_customer
 end
 
 def check

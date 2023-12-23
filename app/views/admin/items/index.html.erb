@@ -1,10 +1,10 @@
 <h2>商品一覧</h2>  <%= link_to "新規登録", new_admin_item_path %>
 
-<%= @item.each do |item| %>
+<% @item.each do |item| %>
 
-  <p> 商品ID <%= @id %> </p>
-  <p> 商品名 <%= @item.name %> </p>
-  <p> 税抜価格 <%= @item.price %> </p>
-
+  <p> 商品ID <%= item.id %> </p>
+  <p> 商品名 <%= link_to item.name, admin_items_path(item.id) %> </p>
+  <p> 税抜価格 <%= item.price %> </p>
 
 <% end %>
+

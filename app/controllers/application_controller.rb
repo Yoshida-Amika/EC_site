@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_path
     when Customer
-      # @customer = Customer.find(params[:id])
       root_path
 
     else
@@ -15,10 +14,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  
+
+
   private
 
     def customers_params
       params.require(:customers).permit(:last_name)
     end
+
 
 end

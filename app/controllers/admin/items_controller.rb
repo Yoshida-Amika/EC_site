@@ -3,7 +3,6 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @id = params[:id]
     @item = Item.all
   end
 
@@ -19,6 +18,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @image = @item.image
   end
 
   def edit
