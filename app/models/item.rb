@@ -6,8 +6,8 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
 
-  def add_tax_sales_price
-    (self.sales_price * 1.10).round
+  def add_tax_price
+    (self.price * 1.10).round
   end
 
 end

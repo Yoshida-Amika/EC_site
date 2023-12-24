@@ -41,9 +41,7 @@ Rails.application.routes.draw do
     resources :homes
     resources :orders
     resources :items
-    get 'item/:id' => 'item#index'
-    # get 'item/new'
-    post 'item' => 'item#create'
+
 
 
   end
