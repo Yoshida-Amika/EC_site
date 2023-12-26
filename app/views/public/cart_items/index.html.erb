@@ -1,1 +1,11 @@
 カート内商品一覧
+
+<% @cart_items.each do |cart_item| %>
+<%= @total = @total+ cart_item.subtotal %>
+
+    <p>商品名<%= cart_item.item.name %> </p>
+    <p>単価（税込）<%= cart_item.item.add_tax_price.to_s(:dalimited) %> </p>
+    <p>数量 <%= cart_item.amount %></p>
+    <p>小計<%= @total += cart_item.subtotal %> %></p>
+
+<% end %>
