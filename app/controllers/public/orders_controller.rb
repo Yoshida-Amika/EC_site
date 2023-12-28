@@ -4,6 +4,9 @@ class Public::OrdersController < ApplicationController
 
   def new
     @customer = current_customer
+    @order = Order.new
+    #@address = Address.all
+
   end
 
   def index
