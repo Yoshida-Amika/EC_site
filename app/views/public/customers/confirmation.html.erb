@@ -4,7 +4,7 @@
 <h2>これまでの購入履歴が閲覧できなくなります。</h2>
 <h2>退会する場合は、「退会する」をクリックしてください。</h2>
 
-<%= link_to "退会しない", customer_path %>
+<%= link_to "退会しない", customer_path(current_customer) %>
 <div class="withdrawl">
-<%= link_to "退会する", withdrawl_customer_path, method: :patch %>
+<%= link_to "退会する", customers_path(current_customer.id), method: :delete %>
 </div>

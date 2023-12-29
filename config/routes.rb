@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     end
 
     get 'about' => 'homes#about'
-    resources :customers
+    get 'confirmation' => 'customers#confirmation'
+    patch 'withdrawl' => 'customers#withdrawal', as: 'withdrawal'
+
     resources :sessions
     resources :items
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
