@@ -1,21 +1,18 @@
 <h2>商品一覧 (全<%= @item.count %>件)</h2>
 
-<table class="table table-striped">
-<% @item.each do |item| %>
+<div class="row">
+  <% @item.each do |item| %>
+    <div class="col-md-3">
+      <div>
+         <%= image_tag item.get_image %>
+        <p>
+          <%= link_to item.name, item_path(item.id) %>
+          ￥<%= item.price %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<tbody>
-  <tr>
-    <td>
-      <%= image_tag item.get_image %>
-      <br>
-      <%= link_to item.name, item_path(item.id) %>
-    </td>
-    <tb>
-      ￥<%= item.price %>
-    </tb>
-  </tr>
-</tbody>
-</table>
 
-<% end %>
 

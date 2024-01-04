@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :cart_items
     resources :orders
     get 'thanks' => 'orders#thanks'
+    post 'confirm' => 'orders#confirm'
 
 
   end

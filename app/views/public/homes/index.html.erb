@@ -10,8 +10,10 @@
     <div class="col-md-3">
         <div>
           <%= image_tag item.get_image %>
+          <p>
           <%= item.name %>
           ￥<%= item.add_tax_price.to_s(:dalimited) %>
+          </p>
         </div>
     </div>
     <% end %>
