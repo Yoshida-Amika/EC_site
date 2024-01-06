@@ -15,7 +15,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
     @customer = current_customer
+    @total = 0
+    @postage = 800
+
   end
 
   def thanks
@@ -44,15 +48,14 @@ class Public::OrdersController < ApplicationController
       end
       current_customer.cart_items.destroy_all
 
-
-     redirect_to thanks_path
+      redirect_to thanks_path
 
   end
 
   private
 
     def order_params
-      params.require(:order).permit(:customer_id, :pay_method, :postal_code, :address, :addressee, :payment_amount, :postage)
+      params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :addressee, :payment_amount, :postage)
     end
 
 end

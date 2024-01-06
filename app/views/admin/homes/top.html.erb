@@ -1,6 +1,13 @@
 <h2>注文履歴一覧</h2>
 
-<% @cart_item.each do |cart_item| %>
+<% @orders.each do |order| %>
 
+<p>購入日時 <%=link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></p>
+<p>購入者 <%= order.addressee %></p>
+<p>注文個数 <%#= order.order_total_amount %></p>
+<p>注文個数 <%= order.order_details.sum(:amount) %></p>
+
+
+<% end %>
 
 

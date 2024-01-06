@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # layout 'application'
 
 
+
+
   def after_sign_in_path_for(resource)
     case resource
     when Admin
@@ -14,15 +16,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  
+
 
 
   private
 
     def customers_params
-      params.require(:customers).permit(:last_name)
+      params.require(:customer).permit(:last_name)
     end
-    
+
+
     def current_cart
     # セッションから取得したcart_idを元にCartテーブルからCart情報を取得
     current_cart = Cart.find_by(id: session[:cart_id])
@@ -32,7 +35,7 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = current_cart.id
     # Cart情報を返却
     current_cart
-  end
+    end
 
 
 end

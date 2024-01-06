@@ -22,8 +22,8 @@ end
 
 def confirmation
     @customer = current_customer
-
 end
+
 
 def check
     @customer = Customer.find(params[:id])
@@ -34,12 +34,6 @@ def withdrawl
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
-end
-
-def destroy
-    @customer = Customer.find(params[:id])
-    @customer.destroy
-    redirect_to :root
 end
 
 

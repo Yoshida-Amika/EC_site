@@ -1,1 +1,20 @@
-商品詳細
+<h2>商品履歴詳細</h2>
+
+<p>購入者 <%=link_to @order.addressee, admin_customer_path %></p>
+<p>注文日 <%=@order.created_at.strftime('%Y/%m/%d')%></p>
+<p>配送先
+<p>〒<%= @order.postal_code %></p>
+<p><%= @order.address %></p>
+<p><%= @order.addressee %></p></p>
+<p>支払方法 <%= @order.payment_method_i18n %></p>
+
+<% @order.order_details.each do |order_detail| %>
+<p>商品名 <%= order_detail.item.name %></p>
+<p>単価(税込) <%= order_detail.item.add_tax_price %></p>
+<p>数量 <%= order_detail.amount %></p>
+<p>小計 <%= order_detail.subtotal %></p>
+<% end %>
+
+<p>商品合計 <%= @order.order_details.sum(&:subtotal) %>円</p>
+<p>送料 <%= @postage %>円</p>
+<p>請求金額合計 <%= @order.payment_amount %>円</p>

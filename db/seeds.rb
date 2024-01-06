@@ -10,3 +10,14 @@ Admin.create!(
   email: "iii@iii" ,
   password: "111111"
 )
+
+image_path = Rails.root.join('app', 'assets', 'images', 'no_image.jpg')
+image_file = File.open(image_path)
+item = Item.create!(
+  name: "チョコケーキ",
+  introduction: "チョコ",
+  price: "2000",
+)
+item.image.attach(io: image_file, filename: 'chocolate_cake.jpg')
+image_file.close
+

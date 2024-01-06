@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
 
+   patch 'customers/withdrawl' => 'customers#withdrawl', as: 'withdrawl'
+
     resources :customers do
       member do
         get "check"
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
 
     get 'about' => 'homes#about'
     get 'confirmation' => 'customers#confirmation'
-    patch 'withdrawl' => 'customers#withdrawal', as: 'withdrawal'
+
 
     resources :sessions
     resources :items
