@@ -4,18 +4,19 @@
   <div class="field">
 
   <h3>会員の方はこちらからログイン</h3>
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="form-group">
+    <p> <label class="col-sm-2">メールアドレス</label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </p>
 
-  <div class="field">
-    <%= f.label :"パスワード" %><br />
+    <p><label class="col-sm-2">パスワード</label>
     <%= f.password_field :password, autocomplete: "current-password" %>
+    </p>
   </div>
 
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン", class:"btn btn-primary" %>
   </div>
 <% end %>
 
