@@ -1,9 +1,22 @@
 <h2>会員一覧</h2>
 
-<% @customer.each do |customer| %>
+<div class="col-9">
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th scope = "col">会員ID</th>
+            <th scope = "col">氏名</th>
+            <th scope = "col">メールアドレス</th>
+        </tr>
+    </thead>
 
-  <p> 会員ID <%= customer.id %> </p>
-  <p> 氏名 <%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></p>
-  <p> メールアドレス <%= customer.email %> </p>
-
-<% end %>
+    <tbody>
+      <% @customer.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></td>
+        <td><%= customer.email %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</div>

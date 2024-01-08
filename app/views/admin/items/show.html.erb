@@ -1,10 +1,33 @@
 <h3>商品詳細</h3>
 
-<p> <%= image_tag @item.get_image(100,100) %> </p>
-<p> 商品名: <%= @item.name %></p>
-<p> 商品説明： <%= @item.introduction %></p>
-<p> 税込価格(税抜価格)： <%= @item.add_tax_price.to_s(:dalimited) %>
-( <%= @item.price %> )円</p>
+<tbody>
+  <div class="container">
+     <div class="row">
+       <div class="col-3">
+        <%= image_tag @item.get_image(300,300) %> </tb>
+       </div>
 
-<%= link_to '編集する' ,edit_admin_item_path %>
+       <div class="col-3 d-flex align-items-center">
+        <table class="table">
+          <tr>
+           <td> 商品名</td>
+           <td><%= @item.name %></td>
+          </tr>
+          <tr>
+           <td> 商品説明</td>
+           <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+           <td> 税込価格<br>(税抜価格)</td>
+           <td><%= @item.add_tax_price.to_s(:dalimited)%>(<%= @item.price %>)円</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+  </div>
 
+</tbody>
+
+<div class="text-center">
+<%= link_to '編集する' ,edit_admin_item_path, class:"btn btn-primary" %>
+</div>

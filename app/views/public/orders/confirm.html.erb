@@ -1,20 +1,49 @@
 <h2>注文情報確認</h2>
 
+<div class="row">
+<table class="table table-bordered border-bark col-8">
+    <thead>
+        <tr class="table-secondary">
+            <th scope = "col">商品名</th>
+            <th scope = "col">単価(税込)</th>
+            <th scope = "col">数量</th>
+            <th scope = "col">小計</th>
+        </tr>
+    </thead>
 
+    <tbody>
+     <%= form_with model: @order, url: orders_path, local: true do |f| %>
+     <% @cart_items.each do |cart_item| %>
+     <% @total = @total+ cart_item.subtotal %>
 
-<%= form_with model: @order, url: orders_path, local: true do |f| %>
-<% @cart_items.each do |cart_item| %>
-<% @total = @total+ cart_item.subtotal %>
+     <tr>
+      <td><%= image_tag cart_item.item.image, size: "100x100" %>
+          <%= cart_item.item.name %></td>
+      <th><%= cart_item.item.add_tax_price.to_s(:dalimited) %></th>
+      <th><%= cart_item.amount %></th>
+      <th><%= cart_item.subtotal %></th>
+      <% end %>
+     </tr>
+    </tbody>
+   </div>
+ </table>
 
- <p>商品名<%= image_tag cart_item.item.image, size: "100x100" %><%= cart_item.item.name %> </p>
- <p>単価（税込）<%= cart_item.item.add_tax_price.to_s(:dalimited) %> </p>
- <p>数量 <%= cart_item.amount %></p>
- <p>小計 <%= cart_item.subtotal %> </p>
-<% end %>
+  <table class="table table-bordered border-bark col-2">
+   <tr>
+    <th class="table-secondary">送料</th>
+    <th><%= @postage %></th>
+   </tr>
+   <tr>
+    <th class="table-secondary">商品合計</th>
+    <th><%= @total %></th>
+   </tr>
+   <tr>
+    <th class="table-secondary">請求金額</th>
+    <th><%= @postage + @total %></th>
+   </tr>
+  </table>
+</div>
 
- <p>送料<%= @postage %></p>
- <p>商品合計<%= @total %></p>
- <p>請求金額<%= @postage + @total %></p>
 
  <p>支払方法 <%= Order.payment_methods_i18n[@payment_method] %></p>
  <p>お届け先　〒<%= current_customer.postal_code %>
@@ -29,9 +58,11 @@
 <%= f.hidden_field :payment_amount, value: @postage + @total %>
 <%= f.hidden_field :postage, value: @postage %>
 
-<%= f.submit "注文を確定する" %>
-
+<div class="text-center">
+<%= f.submit "注文を確定する",class:"btn btn-success" %>
 <% end %>
+</div>
+
 
 
 
