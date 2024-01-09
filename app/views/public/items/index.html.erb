@@ -4,7 +4,9 @@
   <% @item.each do |item| %>
     <div class="col-3">
       <div>
+         <%= link_to item_path(item.id) do %>
          <%= image_tag item.get_image(200,200) %>
+         <% end %>
         <p><%= link_to item.name, item_path(item.id) %></p>
         <p>￥<%= item.price %></p>
       </div>
