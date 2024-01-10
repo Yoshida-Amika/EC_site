@@ -29,7 +29,7 @@
       <p class="text-sm-center">ようこそ、<%= @customer.last_name %> さん！ </p>
       <nav class="navbar navbar-light bg-light">
         <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "マイページ", customer_path(current_customer) %>
+        <%= link_to "マイページ", customers_my_page_path %>
         </button>
 
 
@@ -60,6 +60,7 @@
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
        </button>
 
     <% else %>

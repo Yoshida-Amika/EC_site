@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
    patch 'customers/withdrawl' => 'customers#withdrawl', as: 'withdrawl'
 
-    resources :customers do
+
+    get 'customers/my_page' => 'customers#show'
+    resources :customers, only: [:edit, :update] do
       member do
         get "check"
         patch "withdrawl"
