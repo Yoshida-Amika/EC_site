@@ -4,6 +4,8 @@ before_action :authenticate_admin!
 
 def index
   @customer = Customer.all
+  @customers = Customer.where(status: :resigned)
+  
 end
 
 def show
