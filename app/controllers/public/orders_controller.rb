@@ -1,10 +1,12 @@
 class Public::OrdersController < ApplicationController
 
   before_action :authenticate_customer!
+  before_action :in_cart_item_chack, only:[:new, :create]
 
   def new
     @customer = current_customer
     @order = Order.new
+
 
   end
 
@@ -56,6 +58,13 @@ class Public::OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :addressee, :payment_amount, :postage)
+    end
+
+    def in_cart_item_chack
+      @cart_items = current_customer.cart_items
+      unless @cart_items.present?
+        redirect_to  cart_items_path
+      end
     end
 
 end

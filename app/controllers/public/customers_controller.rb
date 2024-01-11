@@ -11,7 +11,7 @@ end
 def update
     @customer = Customer.find(params[:id])
     @customer.update(customers_params)
-    redirect_to customer_path
+    redirect_to customers_my_page_path
 end
 
 
